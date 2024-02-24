@@ -64,10 +64,11 @@ document.write(`A csapatok átlag pontszáma: ${CsapatokAtlagPontSzama(FifaObjec
 // 3. Listázza ki azokat a csapatokat, akik az átlagnál több pontot értek el!
 
 function CsapatokAtlagFelettiPontSzammal(csapatokAdatainakListaja) {
+    let atlagPont = CsapatokAtlagPontSzama(FifaObjectLista());
     let csapatokAtlagFelettiPontSzammal = [];
 
     for (const csapat of csapatokAdatainakListaja) {
-        if (csapat.pont > CsapatokAtlagPontSzama(FifaObjectLista())) {
+        if (csapat.pont > atlagPont) {
             csapatokAtlagFelettiPontSzammal.push(csapat);
         }
     }

@@ -139,7 +139,7 @@ function CsatlakozasMegadottEvben(europaiOrszagokListaja, csatlakozasEve) {
     console.log(`${csatlakozasEve}-ban/ben ${csatlakozottOrszagokListaja.length} ország csatlakozott az Európai Unióhoz.`);
 }
 
-CsatlakozasMegadottEvben(EuropaiUnio, 2007);
+CsatlakozasMegadottEvben(EuropaiUnio, 2004);
 
 // 3. Csatlakozot-e Magyarország az európai unióhoz? Igen/Nem?
 
@@ -266,11 +266,7 @@ function OrszagokCsatlakozasanakSzamaEvSzerint(europaiOrszagokListaja) {
 
     // evSzamokLista feltőltése az Európai országok csatlakozási évével
     for (const orszag of europaiOrszagokListaja) {
-        if (!SzerepelE(evSzamokListaIn, CsatlakozasListaLetrehozas(orszag)[0])) {
-            evSzamokLista.push(CsatlakozasListaLetrehozas(orszag)[0]);
-        }
-
-
+        evSzamokLista.push(CsatlakozasListaLetrehozas(orszag)[0]);
     }
 
     // evSzamokListaIn feltőltése az Európai országok csatlakozási évével ismétlés nélkül
@@ -279,6 +275,7 @@ function OrszagokCsatlakozasanakSzamaEvSzerint(europaiOrszagokListaja) {
             evSzamokListaIn.push(evSzam)
         }
     }
+
     // Objektum lista létrehozása
     for (const evSzam of evSzamokListaIn) {
         evSzamokObjectLista.push({ "evszam": evSzam, "darab": 0 })
@@ -293,6 +290,7 @@ function OrszagokCsatlakozasanakSzamaEvSzerint(europaiOrszagokListaja) {
         }
 
     }
+
 
     // Adott évben csatlakozott országok kiíratása
     OrszagokCsatlakozasanakSzamaEvSzerintKiír(evSzamokObjectLista);
