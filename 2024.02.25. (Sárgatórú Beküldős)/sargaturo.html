@@ -42,7 +42,7 @@
         </p>
 
         <h2 class="ritka">A sárgatúró receptje <input type="number" name="fo" id="fo" value="1" min="1"
-                onchange="HozzavalokMerteke(this.value)"> főre:</h2>
+                onchange="HozzaValokSzorzasa(this.value)"> főre:</h2>
 
         <h3 class="ritka">Hozzávalók:</h3>
 
@@ -73,8 +73,8 @@
         </ol>
     </div>
     <script>
-        function HozzavalokMerteke(szorzo) {
-            tej.innerHTML = 0.2 * szorzo;
+        function HozzaValokSzorzasa(szorzo) {
+            tej.innerHTML = Math.round(0.2 * szorzo * 100) / 100;
             tojas.innerHTML = 2 * szorzo;
             cukor.innerHTML = 1 * szorzo;
         }
