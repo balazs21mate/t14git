@@ -286,6 +286,8 @@ tetszőleges.
 
 Fejlesztési lehetőség: az eredményeket táblázatos formában jeleníti meg*/
 
+
+// Adatok létrehozása
 function SzerepelEValtozas(ellenorzottLista, keresettAdat) {
     let szerepelE = false;
 
@@ -298,43 +300,49 @@ function SzerepelEValtozas(ellenorzottLista, keresettAdat) {
     return szerepelE;
 }
 
-
-function ValtozasokSzamaStatisztika(csapatokAdatainakListaja) {
-    let valtozasokSzamaLista = [];
+function ValtozasokSzamaListaInLetrehozasa(csapatokAdatainakListaja) {
     let valtozasokSzamaListaIn = [];
-    let valtozasokSzamaObjectLista = [];
-
-    // változások számát külön listába szedni
-    for (const csapat of csapatokAdatainakListaja) {
-        valtozasokSzamaLista.push(csapat.valtozas)
-    }
 
     // változások számát külön listába szedni ismétlés nélkül
-    for (const valtozas of valtozasokSzamaLista) {
-        if (!SzerepelEValtozas(valtozasokSzamaListaIn, valtozas)) {
-            valtozasokSzamaListaIn.push(valtozas);
+    for (const csapat of csapatokAdatainakListaja) {
+        if (!SzerepelEValtozas(valtozasokSzamaListaIn, csapat.valtozas)) {
+            valtozasokSzamaListaIn.push(csapat.valtozas);
         }
     }
+
+    return valtozasokSzamaListaIn;
+}
+
+function ValtozasokSzamaObjectListaLetrehozasa(csapatokAdatainakListaja) {
+    let valtozasokSzamaObjectLista = [];
 
     // valtozasokSzamaObjectLista feltöltése
-    for (const valtozas of valtozasokSzamaListaIn) {
+    for (const valtozas of ValtozasokSzamaListaInLetrehozasa(csapatokAdatainakListaja)) {
         valtozasokSzamaObjectLista.push({ "valtozas": valtozas, "darab": 0 })
-    }
-
-    // változások megszámlálása
-    for (const valtozas of valtozasokSzamaLista) {
-        for (const val of valtozasokSzamaObjectLista) {
-            if (valtozas === val.valtozas) {
-                val.darab++;
-            }
-        }
     }
 
     return valtozasokSzamaObjectLista;
 }
 
 
-function TablazatLetreHozasaValtozas(tablazat, valtozasokListaja) {
+function ValtozasokSzamaStatisztika(csapatokAdatainakListaja) {
+    let statisztikaObjectLista = ValtozasokSzamaObjectListaLetrehozasa(csapatokAdatainakListaja)
+
+    // változások megszámlálása
+    for (const csapat of csapatokAdatainakListaja) {
+        for (const valtozas of statisztikaObjectLista) {
+            if (csapat.valtozas === valtozas.valtozas) {
+                valtozas.darab++;
+            }
+        }
+    }
+
+    return statisztikaObjectLista;
+}
+
+// Statisztika táblázat létrehozása
+
+function StatisztikaTablazatLetreHozasa(tablazat, valtozasokListaja) {
     for (const valtozas of valtozasokListaja) {
         if (valtozas.darab > 1) {
             let adatSor = tablazat.insertRow(1);
@@ -348,7 +356,7 @@ function TablazatLetreHozasaValtozas(tablazat, valtozasokListaja) {
 }
 
 
-function TablazatTorleseValtozas(tablazat, valtozasokListaja) {
+function StatisztikaTablazatTorlese(tablazat, valtozasokListaja) {
 
     for (const valtozas of valtozasokListaja) {
         if (valtozas.darab > 1) {
@@ -358,24 +366,24 @@ function TablazatTorleseValtozas(tablazat, valtozasokListaja) {
 }
 
 
-function TablazatParameterekValtoztatasaValtozas(tablazat, csapatokListaja) {
+function StatisztikaTablazatParameterekValtoztatasa(tablazat, csapatokListaja) {
     if (tablazat.classList.contains("eltuntet")) {
         tablazat.classList.remove("eltuntet");
         tablazat.classList.add("table");
-        TablazatLetreHozasaValtozas(tablazat, csapatokListaja);
+        StatisztikaTablazatLetreHozasa(tablazat, csapatokListaja);
     } else {
         tablazat.classList.remove("table");
         tablazat.classList.add("eltuntet");
-        TablazatTorleseValtozas(tablazat, csapatokListaja);
+        StatisztikaTablazatTorlese(tablazat, csapatokListaja);
     }
 }
 
 
-function ValtozasokSzamaStatisztikaKiirasaTablazatba() {
+function StatisztikaKiirasaTablazatba() {
     let table = document.querySelector("#helyezesek_valtozasa_kiir");
 
-    TablazatParameterekValtoztatasaValtozas(table, ValtozasokSzamaStatisztika(fifaObjectumLista));
+    StatisztikaTablazatParameterekValtoztatasa(table, ValtozasokSzamaStatisztika(fifaObjectumLista));
 }
 
 
-EventListenerHozzaAdasa("#helyezesek_valtozasa", ValtozasokSzamaStatisztikaKiirasaTablazatba);
+EventListenerHozzaAdasa("#helyezesek_valtozasa", StatisztikaKiirasaTablazatba);
