@@ -109,19 +109,6 @@ EventListenerHozzaAdasa("#csapatok_mutatasa", CsapatokKiirasaTablazatba);
 
 
 
-// 0.3 Kiir függvény létrehozása
-
-function Kiir(id, szoveg) {
-    let h3 = document.querySelector(id);
-
-    h3TagDisplayValtoztatasa(h3);
-
-    h3.innerHTML = szoveg;
-}
-
-
-
-
 // 1. Adja meg aktuálisan hány csapat szerepel a ranglistán
 
 function CsapatokSzama(csapatokListaja) {
@@ -129,21 +116,31 @@ function CsapatokSzama(csapatokListaja) {
 }
 
 
-function h3TagDisplayValtoztatasa(h3tag) {
-    if (h3tag.classList.contains("eltuntet")) {
-        h3tag.classList.remove("eltuntet");
-        h3tag.classList.add("block");
-    } else {
-        h3tag.classList.remove("block");
-        h3tag.classList.add("eltuntet");
-    }
+function H3TagEltuntetese(h3tag) {
+    h3tag.classList.remove("block");
+    h3tag.classList.add("eltuntet");
+}
+
+function H3TagDisplayValtoztatasa(h3tag) {
+    h3tag.classList.remove("eltuntet");
+    h3tag.classList.add("block");
+    setTimeout(() => { H3TagEltuntetese(h3tag) }, 4000);
+}
+
+
+function Kiir(id, szoveg) {
+    let h3 = document.querySelector(id);
+
+    H3TagDisplayValtoztatasa(h3);
+
+    h3.innerHTML = szoveg;
 }
 
 
 function CsapatokSzamaKiir() {
     let h3 = document.querySelector("#csapatok_szama_kiir");
 
-    h3TagDisplayValtoztatasa(h3);
+    H3TagDisplayValtoztatasa(h3);
 
     h3.innerHTML = `A Fifa ranglistán szereplő csapatok száma: ${CsapatokSzama(fifaObjectumLista)} csapat.`;
 }
@@ -172,7 +169,7 @@ function AtlagPontszamKiir() {
 
     let h3 = document.querySelector("#atlag_kiir");
 
-    h3TagDisplayValtoztatasa(h3);
+    H3TagDisplayValtoztatasa(h3);
 
     h3.innerHTML = `A Fifa ranglistán szereplő csapatok átlagpontszáma: ${atlagPont} pont.`;
 }
