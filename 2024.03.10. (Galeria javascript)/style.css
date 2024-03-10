@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin-top: 3rem;
+}
+
+/*Galéria formázása*/
+
+#galeria {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#kepek {
+    height: max-content;
+}
+
+#kozepso_kep {
+    cursor: pointer;
+}
+
+#bal_kep,
+#jobb_kep {
+    filter: grayscale(100);
+    transform: scale(0.6);
+}
+
+button {
+    border: none;
+    background-color: inherit;
+    margin: 0 1rem;
+}
+
+/*Form formázása*/
+
+#szerkeszto {
+    display: none;
+    width: 80%;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label,
+#mentes {
+    margin-top: 1rem;
+}
+
+#kep_keret {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#nagy_kep {
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+
+    #bal_kep,
+    #jobb_kep {
+        display: none;
+    }
+
+    #galeria {
+        width: 100%;
+    }
+
+    #szerkeszto {
+        flex-direction: column;
+    }
+
+    #kep_keret {
+        width: 100%;
+        margin-bottom: 5rem;
+        margin-top: 5rem;
+    }
+}
