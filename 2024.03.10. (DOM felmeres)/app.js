@@ -15,7 +15,7 @@ function KarakterSzamlalo() {
     karakterKiir.innerHTML = "Karakterek száma: " + karakterSzam;
 }
 
-karakterInput.addEventListener('keyup', KarakterSzamlalo);
+karakterInput.addEventListener('input', KarakterSzamlalo);
 
 
 
@@ -27,9 +27,6 @@ function Kirajzol() {
     let yKoordinata = Number(document.querySelector("#y_koordinata").value);
 
     let negyzet = document.querySelector("#negyzet");
-
-    console.log(xKoordinata)
-    console.log(yKoordinata)
 
     negyzet.style.width = `${xKoordinata}px`;
     negyzet.style.height = `${yKoordinata}px`;
