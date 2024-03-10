@@ -81,30 +81,43 @@ function validEmail(vizsgalandoEmail) {
 }
 
 function Hibauzenet() {
-    let email = document.querySelector("#email").value;
-    let emailMegerosit = document.querySelector("#email_megerosites").value;
+    let email = document.querySelector("#email");
+    let emailMegerosit = document.querySelector("#email_megerosites");
 
     let hibauzenet = document.querySelector("#hibauzenet");
 
-    if (email != "") {
-        if (emailMegerosit != "") {
-            if (email == emailMegerosit) {
-                if (validEmail(email) && validEmail(emailMegerosit)) {
+    if (email.value != "") {
+        if (emailMegerosit.value != "") {
+            if (email.value == emailMegerosit.value) {
+                if (validEmail(email.value) && validEmail(emailMegerosit.value)) {
                     hibauzenet.innerHTML = "Adatok rögzítése sikeres!";
                     hibauzenet.style.color = "green";
+                    email.style.backgroundColor = "green";
+                    emailMegerosit.style.backgroundColor = "green";
+
                 } else {
                     hibauzenet.innerHTML = "Nem megfelelő az e-mail cím formátuma!";
+                    email.style.backgroundColor = "red";
+                    emailMegerosit.style.backgroundColor = "red";
                 }
             } else {
                 hibauzenet.innerHTML = "A két mező tartalma nem egyezik!";
+                email.style.backgroundColor = "red";
+                emailMegerosit.style.backgroundColor = "red";
             }
         } else {
             hibauzenet.innerHTML = "Nincs kitöltve az e-mail megerősítése mező!";
+            email.style.backgroundColor = "inherit";
+            emailMegerosit.style.backgroundColor = "red";
         }
-    } else if (emailMegerosit == "") {
+    } else if (emailMegerosit.value == "") {
         hibauzenet.innerHTML = "Nincs kitöltve egyik mező sem!";
+        emailMegerosit.style.backgroundColor = "red";
+        email.style.backgroundColor = "red";
     } else {
         hibauzenet.innerHTML = "Nincs kitöltve az e-mail mező!";
+        email.style.backgroundColor = "red";
+        emailMegerosit.style.backgroundColor = "inherit";
     }
 }
 
