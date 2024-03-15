@@ -1,0 +1,58 @@
+<table class="">
+        <tr>
+            <th>Dolgozó vezetékneve</th>
+            <th>Dolgozó keresztneve</th>
+            <th>E-mail cím</th>
+            <th>Telefonszám</th>
+            <th>Beosztás</th>
+            <th>Aktív állomány</th>
+        </tr>
+        <tr>
+            <td>Békés</td>
+            <td>Csaba</td>
+            <td>bekcsa80@gmail.com</td>
+            <td>123-4567</td>
+            <td>Fullstatck fejlesztő</td>
+            <td><input type=""></td>
+        </tr>
+        <tr>
+            <td>Bármi</td>
+            <td>Áron</td>
+            <td>barmiaron@gmail.com</td>
+            <td>999-9999</td>
+            <td>Projekt leader</td>
+            <td><input type=""></td>
+        </tr>
+        <tr>
+            <td>Minta</td>
+            <td>Márton</td>
+            <td>mintamarci@gmail.com</td>
+            <td>111-1111</td>
+            <td>Adatbázis tudós</td>
+            <td><input type=""></td>
+        </tr>
+        <tr>
+            <td>Szikla</td>
+            <td>Szilárd</td>
+            <td>sz-szilard@gmail.com</td>
+            <td>444-5555</td>
+            <td>BackEnd fejlesztő</td>
+            <td><input type=""></td>
+        </tr>
+        <tr>
+            <td>Dil</td>
+            <td>Emma</td>
+            <td>sz-szilard@gmail.com</td>
+            <td>343-4545</td>
+            <td>FrontEnd fejlesztő</td>
+            <td><input type=""></td>
+        </tr>
+        <tr>
+            <td>Meg</td>
+            <td>Győző</td>
+            <td>gyozike@gmail.com</td>
+            <td>121-2121</td>
+            <td>SCRUM master</td>
+            <td><input type=""></td>
+        </tr>
+    </table>
