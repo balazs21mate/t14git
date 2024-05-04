@@ -17,16 +17,17 @@ function mindenUnCheck() {
     for (let i = 0; i < elemLista.length; i++) {
         elemLista[i].checked = false;
     }
+
 }
 
-
-
-
-//Szorgalmi: Próbáld meg egy gombra rakni a két funkciót check/uncheck, illetve megoldani, hogy megcserélje a kijelöléseket(megfordítja)
-
+//Szorgalmi: Próbáld meg egy gombra rakni a két funkciót check/uncheck, illetve m
 // Aktiváló-Deaktiváló gomb
 
+let aktivalo = document.querySelector("#aktivalo");
+
 aktivalo.addEventListener("click", AktivAllomanyKapcsolo);
+
+
 
 function AktivAllomanyKapcsolo() {
     let elemLista = document.querySelectorAll(".allapot");
@@ -224,7 +225,7 @@ function ValidacioEmail() {
 function ValidacioMobilSzam() {
     let mobilSzam = document.querySelector("#tel");
     let uzenet = document.querySelector("#validacios_uzenet_tel");
-    const regex = /^\d{3}-\d{4}$/;
+    const regex = /^\d{3}-\d{4}$/i;
 
     if (mobilSzam.value) {
         if (regex.test(mobilSzam.value)) {
