@@ -1,5 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb+srv://balazs21mate:eKEEvH91NLLjK0Bs@cluster0.nsw5uto.mongodb.net/";
+const url = "";
 
 const HelsinkiAdatok = require("./00_Adatok_feldolgozasa");
 
